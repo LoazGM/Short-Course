@@ -6,12 +6,14 @@ contract SimpleStorage {
     uint256 private storedValue;
     string public message;
     address public owner;
+    event OwnerSet(address newOwner);
 
     //ketika ada update, saya akan track perubahannya
     event ValueUpdated(uint256 newValue);
 
     constructor() {
         owner = msg.sender;
+        emit OwnerSet(owner);
     }
 
     modifier onlyOwner() {
