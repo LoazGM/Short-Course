@@ -543,11 +543,11 @@ Tambahkan 1 state lainnya seperti `message` atau `todo list` yang bisa diupdate 
 
 ## 🧪 Checklist
 
-- [ ] Contract berhasil compile
-- [ ] Contract berhasil deploy
-- [ ] Address tersimpan di blockchain Avalanche Fuji Testnet
-- [ ] ABI tersedia
-- [ ] Event terlihat di explorer
+- [x] Contract berhasil compile
+- [x] Contract berhasil deploy
+- [x] Address tersimpan di blockchain Avalanche Fuji Testnet
+- [x] ABI tersedia
+- [x] Event terlihat di explorer
 
 [Submission Link](https://forms.gle/bDjmXjqaK3X7yapc8) aktif selama 48 jam
 
