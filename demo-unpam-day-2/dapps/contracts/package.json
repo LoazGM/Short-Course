@@ -7,13 +7,13 @@
     "contract",
     "solidity"
   ],
-  "homepage": "https://github.com/LoazGM/Short-Course-day-2#readme",
+  "homepage": "https://github.com/LoazGM/Short-Course#readme",
   "bugs": {
-    "url": "https://github.com/LoazGM/Short-Course-day-2/issues"
+    "url": "https://github.com/LoazGM/Short-Course/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LoazGM/Short-Course-day-2.git"
+    "url": "git+https://github.com/LoazGM/Short-Course.git"
   },
   "license": "MIT",
   "author": "Arya Shevana HK",
