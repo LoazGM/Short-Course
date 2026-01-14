@@ -131,7 +131,7 @@ export default function Page() {
   // 🔹 UI
   // ==============================
   return (
-    <main className="min-h-screen flex items-center justify-center bg-black text-white">
+    <main className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-md border border-gray-700 rounded-lg p-6 space-y-6">
 
         <h1 className="text-xl font-bold">
@@ -160,6 +160,11 @@ export default function Page() {
             <p className="font-mono text-sm">
               {shortenAddress(address)}
             </p>
+
+            <p className="text-xs text-green-400">
+            Network: {chainId === avalancheFuji.id ? 'Avalanche Fuji' : 'Wrong Network'}
+            </p>
+
 
             <button
               onClick={() => disconnect()}
