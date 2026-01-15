@@ -33,33 +33,65 @@ export class BlockchainService {
   }
 
   // 🔹 Read ValueUpdated events
-  async getValueUpdatedEvents(fromBlock: number, toBlock: number) {
-    const events = await this.client.getLogs({
-      address: this.contractAddress,
-      event: {
-        type: 'event',
-        name: 'ValueUpdated',
-        inputs: [
-          {
-            name: 'newValue',
-            type: 'uint256',
-            indexed: false,
-          },
-        ],
-      },
-      fromBlock: BigInt(fromBlock),
-      toBlock: BigInt(toBlock),
-    });
+  async getValueUpdatedEvents(
+    fromBlock: number,
+    toBlock: number,
+    page = 1,
+    limit = 10,
+  ) {
+    try {
+      const events = await this.client.getLogs({
+        address: this.contractAddress,
+        event: {
+          type: 'event',
+          name: 'ValueUpdated',
+          inputs: [
+            {
+              name: 'newValue',
+              type: 'uint256',
+              indexed: false,
+            },
+          ],
+        },
+        fromBlock: BigInt(fromBlock),
+        toBlock: BigInt(toBlock),
+      });
 
-    return events
-      .filter(
-        (event): event is typeof event & { args: { newValue: bigint } } =>
-          event.args?.newValue !== undefined,
-      )
-      .map((event) => ({
-        blockNumber: event.blockNumber?.toString(),
-        value: event.args.newValue.toString(),
-        txHash: event.transactionHash,
-      }));
+      const filtered = events
+        .filter(
+          (event): event is typeof event & { args: { newValue: bigint } } =>
+            event.args?.newValue !== undefined,
+        )
+        .map((event) => ({
+          blockNumber: event.blockNumber?.toString(),
+          value: event.args.newValue.toString(),
+          txHash: event.transactionHash,
+        }));
+
+      const start = (page - 1) * limit;
+      const end = start + limit;
+
+      return {
+        success: true,
+        data: filtered.slice(start, end),
+        meta: {
+          page,
+          limit,
+          total: filtered.length,
+        },
+      };
+    } catch (error: unknown) {
+      let errorMessage = 'Unknown error';
+
+      if (error instanceof Error) {
+        errorMessage = error.message;
+      }
+
+      return {
+        success: false,
+        message: 'Failed to fetch events',
+        error: errorMessage,
+      };
+    }
   }
 }

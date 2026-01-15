@@ -18,6 +18,8 @@ export class BlockchainController {
     return this.blockchainService.getValueUpdatedEvents(
       body.fromBlock,
       body.toBlock,
+      body.page,
+      body.limit,
     );
   }
 }
