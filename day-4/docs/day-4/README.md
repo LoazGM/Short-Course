@@ -555,11 +555,11 @@ Membangun **backend API sederhana yang membaca data blockchain**.
 
 ## 🧪 Checklist
 
-- [ ] Backend NestJS berjalan
-- [ ] viem terhubung ke Fuji RPC
-- [ ] API bisa read contract
-- [ ] Event bisa di-fetch
-- [ ] Frontend bisa consume API
+- [x] Backend NestJS berjalan
+- [x] viem terhubung ke Fuji RPC
+- [x] API bisa read contract
+- [x] Event bisa di-fetch
+- [x] Frontend bisa consume API
 
 [Submission Link](https://forms.gle/svzhUB5rCbV5kEAJ8) aktif selama 48 jam, deadline tanggal 17 Januari 2026, pukul 23.59 WIB
 
